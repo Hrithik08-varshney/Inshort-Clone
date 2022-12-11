@@ -1,0 +1,54 @@
+.content{
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.downloadmsg{
+  width:100%;
+  display: flex;
+  align-items: center;
+  background: #f44336;
+  height:48px;
+  padding:0px 50px;
+  margin:30px 0px 40px 0px;
+  color:white;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.16),0px 2px 10px  0px  rgba(0,0,0,0.12);
+  font-size: 14px;
+  gap:7px;
+}
+.downloadtxt{
+    flex: 1;
+    
+}
+.link{
+    display: flex;
+    margin-top: 10px;
+    height: 48px;
+}
+.link1{
+    margin-left: 30px;
+}
+
+@media(max-width:995px){
+    .downloadmsg{
+        display:none;
+    }
+}
+.loadmore{
+    cursor: pointer;
+    background-color: White;
+    border: none;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.16),0px 2px 10px  0px  rgba(0,0,0,0.12);
+    padding:7px 25px;
+    font-size: 15px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: 400;
+    position: relative;
+}
+.loadmore:hover{
+    box-shadow: 0px 2px 5px 3px rgba(0,0,0,0.16),0px 2px 10px  5px  rgba(0,0,0,0.12);
+}
