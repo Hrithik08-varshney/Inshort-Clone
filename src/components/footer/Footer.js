@@ -7,7 +7,7 @@ const Footer = () => {
         src="https://assets.inshorts.com/website_assets/images/logo_footer.png "
         width="160px"
         height="48px"
-        
+        alt="inshorts"
       />
 
       <span style={{ color: "#cfcfcf" }}>
@@ -18,24 +18,33 @@ const Footer = () => {
       </span>
       <span className="name">
         Inshorts Clone made by -{" "}
-        <a href="https://www.inshorts.com/en/read" target="_blank" >
+        <a
+          href="https://www.inshorts.com/en/read"
+          target="_blank"
+          rel="noreferrer"
+        >
           Nishu & Hrithik
         </a>
         {/* Nishu & Hrithik */}
       </span>
       <hr style={{ width: "90%" }} />
       <div className="iconContainer">
-        <a href="https://www.facebook.com/inshortsapp" target="_blank">
-          <i class="fa-brands fa-facebook-f fa-2x"></i>
+        <a
+          href="https://www.facebook.com/inshortsapp"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="fa-brands fa-facebook-f fa-2x"></i>
         </a>
-        <a href="https://twitter.com/inshorts" target="_blank">
-          <i class="fa-brands fa-twitter fa-2x"></i>
+        <a href="https://twitter.com/inshorts" target="_blank" rel="noreferrer">
+          <i className="fa-brands fa-twitter fa-2x"></i>
         </a>
         <a
           href="https://www.linkedin.com/company/news-in-shorts/"
           target="_blank"
+          rel="noreferrer"
         >
-          <i class="fa-brands fa-linkedin-in fa-2x"></i>
+          <i className="fa-brands fa-linkedin-in fa-2x"></i>
         </a>
       </div>
     </div>

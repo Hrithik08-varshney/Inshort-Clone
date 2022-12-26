@@ -9,24 +9,28 @@ import Footer from "./components/footer/Footer";
 function App() {
   const [category, setCategory] = useState("general");
   const [newsArray, setNewsArray] = useState([]);
-  const [newsResults, setResults] = useState();
+  const [newsResults, setNewsResults] = useState();
   const [graphQl, setGraphQl] = useState(20);
-  const newsApi = async (graphQl) => {
+
+  const newsApi = async () => {
     try {
       const news = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apikey}&category=${category}&pageSize=${graphQl}`
       );
       setNewsArray(news.data.articles);
-      setResults(news.data.totalResults);
+      setNewsResults(news.data.totalResults);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(newsArray);
+  
   useEffect(() => {
-    newsApi(graphQl);
+    newsApi();
+    // eslint-disable-next-line
   }, [newsResults, category, graphQl]);
   
+  
+
   return (
     <div className="App">
       <Navinshorts setCategory={setCategory} />
