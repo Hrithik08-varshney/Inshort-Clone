@@ -3,10 +3,9 @@ import React from "react";
 import NewsCard from "../newcard/NewsCard";
 import "./NewsContent.css";
 
-const NewsContent = ({ setGraphQl, graphQl, newsArray }) => {
-  const slice = newsArray.slice(0, graphQl);
+const NewsContent = ({ newsArr,filter,setFilter }) => {
   const loadMore = () => {
-    setGraphQl(graphQl + 22);
+    setFilter(filter+10);
   };
   return (
     <>
@@ -43,7 +42,7 @@ const NewsContent = ({ setGraphQl, graphQl, newsArray }) => {
         </div>
         {
           // newsArray
-         slice.map((newsItem) => (
+          newsArr.length && newsArr?.map((newsItem) => (
             <NewsCard newsItem={newsItem} key={newsItem.title} />
           ))
         }

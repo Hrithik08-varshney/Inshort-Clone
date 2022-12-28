@@ -3,48 +3,96 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Navinshorts from "./components/Navinshorts";
 import NewsContent from "./components/NewsComponent/NewsContent";
-
-import apikey from "./data/Config";
 import Footer from "./components/footer/Footer";
+import {
+  businessNews,
+  entertainmentNews,
+  generalNews,
+  healthNews,
+  scienceNews,
+  sportsNews,
+  technologyNews,
+} from "./Apis/Apis";
 function App() {
   const [category, setCategory] = useState("general");
-  const [newsArray, setNewsArray] = useState([]);
-  const [newsResults, setNewsResults] = useState();
-  const [graphQl, setGraphQl] = useState(20);
+  const [newsArr, setNewsArr] = useState([]);
+  const [newsObj, setNewsObj] = useState({
+    general: [],
+    entertainment: [],
+    business: [],
+    health: [],
+    science: [],
+    sports: [],
+    technology: [],
+  });
+  const [filter, setFilter] = useState(10);
 
   const newsApi = async () => {
     try {
-      const news = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apikey}&category=${category}&pageSize=${graphQl}`
-      );
-      setNewsArray(news.data.articles);
-      setNewsResults(news.data.totalResults);
+      const general_News = await axios.get(generalNews);
+      const entertainment_News = await axios.get(entertainmentNews);
+      const health_News = await axios.get(healthNews);
+      const business_News = await axios.get(businessNews);
+      const science_News = await axios.get(scienceNews);
+      const sports_News = await axios.get(sportsNews);
+      const technology_News = await axios.get(technologyNews);
+      setNewsObj({
+        general: general_News?.data?.articles,
+        entertainment: entertainment_News?.data?.articles,
+        health: health_News?.data?.articles,
+        business: business_News?.data?.articles,
+        science: science_News?.data?.articles,
+        sports: sports_News?.data?.articles,
+        technology: technology_News?.data?.articles,
+      });
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     newsApi();
     // eslint-disable-next-line
-  }, [newsResults, category, graphQl]);
-  
-  
+  }, []);
 
+  useEffect(() => {
+    if (category === "general" || category === "General") {
+      setNewsArr(newsObj?.general?.slice(0, filter));
+    } else if (category === "entertainment" || category === "Entertainment") {
+      setNewsArr(newsObj?.entertainment?.slice(0, filter));
+    } else if (category === "health" || category === "Health") {
+      setNewsArr(newsObj?.health?.slice(0, filter));
+    } else if (category === "business" || category === "Business") {
+      setNewsArr(newsObj?.business?.slice(0, filter));
+    } else if (category === "science" || category === "Science") {
+      setNewsArr(newsObj?.science?.slice(0, filter));
+    } else if (category === "sports" || category === "Sports") {
+      setNewsArr(newsObj?.sports?.slice(0, filter));
+    } else if (category === "technology" || category === "Technology") {
+      setNewsArr(newsObj?.technology?.slice(0, filter));
+    }
+    console.log(newsArr, "my news array is here");
+  }, [newsObj, category, filter]);
+
+  useEffect(()=>{
+    setFilter(10);
+  },[category])
+
+  console.log(category, "dfghjkldfghjkl");
   return (
     <div className="App">
       <Navinshorts setCategory={setCategory} />
-      <NewsContent
-        setGraphQl={setGraphQl}
-        graphQl={graphQl}
-        newsArray={newsArray}
-        newsApi={newsApi}
-      />
-      
+      {newsArr?.length && (
+        <NewsContent
+          newsArr={newsArr}
+          category={category}
+          filter={filter}
+          setFilter={setFilter}
+        />
+      )}
       <Footer />
     </div>
   );
 }
 
 export default App;
-

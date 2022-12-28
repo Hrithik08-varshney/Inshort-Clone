@@ -1,7 +1,6 @@
 import React from "react";
 import "./NewsCard.css";
 const NewsCard = ({ newsItem }) => {
-  console.log(newsItem);
   const fulldate = new Date(newsItem.publishedAt);
   var date = fulldate.toString().split(" ");
   const hour = parseInt(date[4].substring(0, 2));

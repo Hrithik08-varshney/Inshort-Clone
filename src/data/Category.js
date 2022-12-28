@@ -1,6 +1,5 @@
 const categories=[
     "Business",
-    
     "Entertainment",
     "General",
     "Health",
