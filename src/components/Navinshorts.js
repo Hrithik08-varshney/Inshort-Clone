@@ -1,11 +1,11 @@
 import React from "react";
 import "./Navinshorts.css";
 import HamburgerIcon from "./HamburgerIcon";
-const Navinshorts = ({ setCategory }) => {
+const Navinshorts = ({ setCategory,category }) => {
   return (
     <div className="nav">
       <div className="icon">
-        <HamburgerIcon setCategory={setCategory} />
+        <HamburgerIcon setCategory={setCategory} category={category} />
       </div>
       <a href="https://www.inshorts.com" alt="inshorts-app" >
       <img

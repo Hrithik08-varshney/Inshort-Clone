@@ -13,6 +13,7 @@ import {
   sportsNews,
   technologyNews,
 } from "./Apis/Apis";
+import Loader from "react-js-loader";
 function App() {
   const [category, setCategory] = useState("general");
   const [newsArr, setNewsArr] = useState([]);
@@ -76,20 +77,20 @@ function App() {
 
   useEffect(()=>{
     setFilter(10);
+  console.log(category, "dfghjkldfghjkl");
   },[category])
 
-  console.log(category, "dfghjkldfghjkl");
   return (
     <div className="App">
-      <Navinshorts setCategory={setCategory} />
-      {newsArr?.length && (
+      <Navinshorts setCategory={setCategory} category={category}/>
+      {newsArr?.length ? (
         <NewsContent
           newsArr={newsArr}
           category={category}
           filter={filter}
           setFilter={setFilter}
         />
-      )}
+      ) :  <Loader type="spinner-circle" bgColor={"black"} title={"spinner-circle"} color={'#FFFFFF'} size={100} /> }
       <Footer />
     </div>
   );

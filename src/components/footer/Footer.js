@@ -16,17 +16,6 @@ const Footer = () => {
       <span style={{ fontSize: "12px", color: "#4B4B4B" }}>
         &#169;COPYRIGHT 2022
       </span>
-      <span className="name">
-        Inshorts Clone made by -{" "}
-        <a
-          href="https://www.inshorts.com/en/read"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nishu & Hrithik
-        </a>
-        {/* Nishu & Hrithik */}
-      </span>
       <hr style={{ width: "90%" }} />
       <div className="iconContainer">
         <a
